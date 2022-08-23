@@ -1,0 +1,4 @@
+echo '[paolo] Starting XAMPP'
+sudo /Applications/XAMPP/xamppfiles/xampp start
+echo '[paolo] Starting MySQL'
+sudo mysql.server start

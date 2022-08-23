@@ -1,0 +1,2 @@
+echo '[paolo] Stopping XAMPP'
+sudo /Applications/XAMPP/xamppfiles/xampp stop
