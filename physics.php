@@ -1,3 +1,7 @@
+<?php
+require ("init.php");
+?>
+
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
@@ -9,6 +13,8 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+	<!-- jQuery -->
+	<script type="text/javascript" src="js/scripts.js"></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
@@ -67,7 +73,12 @@
 		       <a href="https://link.springer.com/article/10.1007/JHEP11(2021)118"> JHEP 11 (2021) 118 </a> <br>
 		       <a href="https://link.springer.com/article/10.1140/epjc/s10052-020-08509-3"> EPJC 80 (2020) 1085  </a> 
 		     </p>
-                     <hr class="d-none d-lg-block mb-0 ms-0" />
+
+		     <br>
+		     <button type="button" class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#modal4tops" > more </button>
+		     <?php include ("articles/4tops.html"); ?>		     
+
+		     <hr class="d-none d-lg-block mb-0 ms-0" />
                    </div>
                  </div>
                </div>
@@ -207,3 +218,5 @@
     </body>
 
 </html>
+
+

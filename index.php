@@ -1,3 +1,7 @@
+<?php
+require("init.php");
+?>
+
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
@@ -103,7 +107,7 @@
                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="img/bubble-chamb.jpg" alt="..." /></div>
                     <div class="col-xl-4 col-lg-5">
                         <div class="featured-text text-center text-lg-left">
-                            <a href="physics.html"> <h4>Physics</h4> </a>
+                            <a href="physics.php"> <h4>Physics</h4> </a>
                             <p class="text-black-50 mb-0">Short summaries of my favourite papers</p>
                         </div>
                     </div>
@@ -115,7 +119,7 @@
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
                                 <div class="project-text w-100 my-auto text-center text-lg-left">
-                                    <h4 class="text-white"> <a href="fun.html"> Fun </a> </h4>
+                                    <h4 class="text-white"> <a href="fun.php"> Fun </a> </h4>
                                     <p class="mb-0 text-white-50"> Some of my free-time data analyses and programming projects</p>
                                     <hr class="d-none d-lg-block mb-0 ms-0" />
                                 </div>

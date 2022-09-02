@@ -1,3 +1,7 @@
+<?php
+require("init.php");
+?>
+
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
