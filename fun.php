@@ -78,10 +78,29 @@ require("init.php");
            </div>
 
 	   
+   	   <!-- VotoAI --> 
+           <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
+             <div class="col-lg-6"><img class="img-fluid" src="img/fun/scheme_220919.png" alt="..." style="background-size: cover;height: 100%;width: 100%;"/></div>
+             <div class="col-lg-6 order-lg-first">
+               <div class="bg-black text-center h-100 project">
+                 <div class="d-flex h-100">
+                   <div class="project-text w-100 my-auto text-center text-lg-left" style="padding:5%">
+                     <h4 class="text-white"> FantaWomen VotoAI </h4>
+                     <p class="mb-0 text-white-50"> Machine are for sure quicker and probably less biased than humans in evaluating players after matches. This project aims at exaclty doing this, by using open-access data available for Serie A Women. <br><br> Ongoing, with the final goal of providing livescores!</p>
+		       <br><br>
+		       <a href="https://paolosabatini.github.io/fanta-voto-ai/"> Code &  Web-doc </a> <br>
+		     </p>
+                     <hr class="d-none d-lg-block mb-0 ms-0" />
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+
    	   <!-- Epide --> 
            <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
              <div class="col-lg-6"><img class="img-fluid" src="img/fun/myepide.png" alt="..." style="background-size: cover;height: 100%;width: 100%;"/></div>
-             <div class="col-lg-6 order-lg-first">
+             <div class="col-lg-6">
                <div class="bg-black text-center h-100 project">
                  <div class="d-flex h-100">
                    <div class="project-text w-100 my-auto text-center text-lg-left" style="padding:5%">
@@ -102,7 +121,7 @@ require("init.php");
 	   <!--  BrainSnake --> 
            <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
              <div class="col-lg-6"><img class="img-fluid" src="img/fun/SnakeScreen.png" alt="..." style="background-size: cover;height: 100%;width: 100%;"/></div>
-             <div class="col-lg-6">
+             <div class="col-lg-6 order-lg-first">
                <div class="bg-black text-center h-100 project">
                  <div class="d-flex h-100">
                    <div class="project-text w-100 my-auto text-center text-lg-left" style="padding:5%">
