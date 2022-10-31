@@ -32,8 +32,9 @@ require("init.php");
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="index.php##about">about</a></li>
-            <li class="nav-item"><a class="nav-link" href="index.php##projects">projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.php#about">about</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.php#portfolio">portfolio</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.php#news">news</a></li>
             <li class="nav-item"><a class="nav-link" href="#contact">contact</a></li>
           </ul>
         </div>
@@ -51,95 +52,25 @@ require("init.php");
       <div class="container px-4 px-lg-5">
        <div class="row gx-4 gx-lg-5 justify-content-center">
          <div class="col-lg-0" style="margin:10px">
-	   <h2> More projects more fun </h2>
-	   <p>  Life is too short to sleep, right? I hope so, otherwise, why am I here typing at the laptop?  </p>
-	   <p style="color:orange"> Page still under construction.. </p> 
+	   <h2> Parallel projects </h2><br>
+	   <p style="color:gray"> This page collects some current and past projects over several different fields. The projects are usually related to software/web-page development, machine learning applications and data analysis. <br><br>
+	   Below, the projects are categorized by topic and a little introduction is given. Check them out!</p>
 	 </div>
-	 <div class="row gx-4 gx-lg-5 justify-content-center" style="margin:20px"> <!-- here the card go -->
 
 
-	   <!-- FantaWomen-->
-           <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
-             <div class="col-lg-6"><img class="img-fluid" src="img/fun/fw.png" alt="..." style="background-size: cover;height: 100%;width: 100%;"/></div>
-             <div class="col-lg-6">
-               <div class="bg-black text-center h-100 project">
-                 <div class="d-flex h-100">
-                   <div class="project-text w-100 my-auto text-center text-lg-left" style="padding:5%">
-                     <h4 class="text-white"> FantaWomen </h4>
-                     <p class="mb-0 text-white-50"> From 2022, I collaborate with the italian website <a href="https://www.lfootball.it/"> LFootball </a> for the development and maintenance of FantaWoman.<br> It is a fantasy game based on the Serie A Women. <br> Check it out!</p>
-		       <br><br>
-		       <a href="https://www.lfootball.it/fantawomen/index.php"> Play!  </a> 
-		     </p>
-                     <hr class="d-none d-lg-block mb-0 ms-0" />
-                   </div>
-                 </div>
-               </div>
-             </div>
-           </div>
-
+	 <br>
+	 <?php include  ("articles/women_football.html"); ?>
+	 <br>
+	 
+   	 <br>
+	 <?php include  ("articles/epidemy.html"); ?>
+	 <br>
+	
+   	 <br>
+	 <?php include  ("articles/brainsnake.html"); ?>
+	 <br>
 	   
-   	   <!-- VotoAI --> 
-           <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
-             <div class="col-lg-6"><img class="img-fluid" src="img/fun/scheme_220919.png" alt="..." style="background-size: cover;height: 100%;width: 100%;"/></div>
-             <div class="col-lg-6 order-lg-first">
-               <div class="bg-black text-center h-100 project">
-                 <div class="d-flex h-100">
-                   <div class="project-text w-100 my-auto text-center text-lg-left" style="padding:5%">
-                     <h4 class="text-white"> FantaWomen VotoAI </h4>
-                     <p class="mb-0 text-white-50"> Machine are for sure quicker and probably less biased than humans in evaluating players after matches. This project aims at exaclty doing this, by using open-access data available for Serie A Women. <br><br> Ongoing, with the final goal of providing livescores!</p>
-		       <br><br>
-		       <a href="https://paolosabatini.github.io/fanta-voto-ai/"> Code &  Web-doc </a> <br>
-		     </p>
-                     <hr class="d-none d-lg-block mb-0 ms-0" />
-                   </div>
-                 </div>
-               </div>
-             </div>
-           </div>
-
-   	   <!-- Epide --> 
-           <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
-             <div class="col-lg-6"><img class="img-fluid" src="img/fun/myepide.png" alt="..." style="background-size: cover;height: 100%;width: 100%;"/></div>
-             <div class="col-lg-6">
-               <div class="bg-black text-center h-100 project">
-                 <div class="d-flex h-100">
-                   <div class="project-text w-100 my-auto text-center text-lg-left" style="padding:5%">
-                     <h4 class="text-white"> The Lombardy case in the early phase of COVID-19 </h4>
-                     <p class="mb-0 text-white-50"> A brief analysis during the early - and dramatic - diffusion of COVID-19 in Lombardy. The analysis profited of a very limited amount of available data during March and April 2020 on COVID-19 and tempted a modellisation of the epidemic model. <br> Things got a bit rough afterwards, and I did not review it with more data.</p>
-		       <br><br>
-		       <a href="https://github.com/paolosabatini/MyEpide/releases/tag/v1.0"> Code & Documentation  </a> <br>
-		     </p>
-                     <hr class="d-none d-lg-block mb-0 ms-0" />
-                   </div>
-                 </div>
-               </div>
-             </div>
-           </div>
-
-
-	   
-	   <!--  BrainSnake --> 
-           <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
-             <div class="col-lg-6"><img class="img-fluid" src="img/fun/SnakeScreen.png" alt="..." style="background-size: cover;height: 100%;width: 100%;"/></div>
-             <div class="col-lg-6 order-lg-first">
-               <div class="bg-black text-center h-100 project">
-                 <div class="d-flex h-100">
-                   <div class="project-text w-100 my-auto text-center text-lg-left" style="padding:5%">
-                     <h4 class="text-white"> BrainSnake </h4>
-                     <p class="mb-0 text-white-50"> A test of Reinforcement learning to challange humans on the famous 8-bit snake game. <br><br> Currently <b style="color:white"> suspended </b> due to lack of time.<br> <br> <i> Status </i>: benchmark created to be challanged by AI. </p>
-		       <br><br>
-		       <a href="https://github.com/paolosabatini/BrainSnake/"> Code and Documentation  </a> 
-		     </p>
-                     <hr class="d-none d-lg-block mb-0 ms-0" />
-                   </div>
-                 </div>
-               </div>
-             </div>
-           </div>
-	   
-  
-
-	 </div>
+	 <div class="row gx-4 gx-lg-5 justify-content-center" style="margin:20px"> <!-- here the card go -->	      </div>
        </div>
       </div>
     </section>
@@ -162,6 +93,17 @@ require("init.php");
               </div>
             </div>
           </div>
+ 	  <div class="col-md-4 mb-3 mb-md-0">
+            <div class="card py-4 h-100">
+              <div class="card-body text-center">
+                <i class="fas fa-phone text-primary mb-2"></i>
+          	<h4 class="text-uppercase m-0">Mobile</h4>
+          	<hr class="my-4 mx-auto" />
+          	<div class="small text-black-50"><a href="#!">+39 3385968853</a></div>
+              </div>
+            </div>
+          </div>
+
         </div>
 	
         <div class="social d-flex justify-content-center">

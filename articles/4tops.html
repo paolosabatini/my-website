@@ -1,0 +1,61 @@
+<!-- Modal -->
+<div class="modal fade" id="modal4tops" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="Label4tops" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
+    <div class="modal-content"  style="background-color:white;color:black">
+      <div class="modal-header">
+        <h5 class="modal-title" id="label4tops">Ultra-rare four top production search </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" style="color:gray;padding:5%;text-align:left">
+	
+	The two quoted papers collect the results of the search of this rare process, consisting of the production of four  <button class="btn-link" style="background-color:transparent;box-shadow:none;border-color: transparent;color:black;padding:0%"  data-toggle="tooltip" title="It is the heaviest particle known so far, and the only quark that decays before creating a jet. It mainly decays to other quarks, but decays to leptons are also interesting as easier to detect. A decay product of top quarks are always b-quarks, experimentally super-important!">  top quarks </button> in the final state. The cross-section (probability of production) for this process is so small that the LHC managed to produce only around 1.5k of them between 2015-2018.
+
+	<br><br> Therefore, it is important not to waste any of them, and the two papers focus on orthogonal datasets exploiting different decays of the top quarks. The first paper focused in the detection using events with three  <button class="btn-link" style="background-color:transparent;box-shadow:none;border-color: transparent;color:black;padding:0%"  data-toggle="tooltip" title="i.e. electrons, muons, taus and neutrinos"> leptons </button> or two leptons with the same charge. This analysis is the most sensitive as not many standard processes could give this signature, giving purer signale events. Here, I will focus on the second paper, containing the analysis of events with a single lepton or two leptons with the opposite-sign in the final state and the combination with the former result.
+
+	<br><br><i style="color:black"> What makes this process so special? </i>  It is expected from the <button class="btn-link" style="background-color:transparent;box-shadow:none;border-color: transparent;color:black;padding:0%" data-toggle="tooltip" title="This is the theory of high-energy physics describing the fundamental interactions. ">Standard Model</button>, would it be able to correctly describe nature even for such rare events? Furthermore, it is particularly sensitive to many new physics scenarios, that would inflate give an excess of measured event with respect to the expectations.
+
+	<br><br><i style="color:black"> What are the challenges? </i>  To be sensitive to a tiny signal, we need a robust estimation of the background, meaning non-signal events that populate the dataset we select. Let's compare the following Feynman diagrams.
+	<br><br><div class="text-center">
+	<img class="img-fluid" src="img/physics/4tops/fig_01a.png" alt="..." style="background-size: cover;width: 30%;"/> &nbsp;&nbsp;
+	<img class="img-fluid" src="img/physics/4tops/fig_01c.png" alt="..." style="background-size: cover;width: 30%;"/>
+	</div><br><br>
+	On the left, we have our four top (4tops) signal, on the right the main background consisting of top pair production associated with jets (tt). They are not very similar, right? But what do we measure? Considering that top quarks give a jet from a b-quark (b-jet) plus leptons or other jets, in case tt is associated with a lot of jets then they are almost identical. How probable is to measure tt plus 5/6 jets? Very small, but we must consider that the probability of producing tt is 10000 times larger than 4tops in this specific <button class="btn-link" style="background-color:transparent;box-shadow:none;border-color: transparent;color:black;padding:0%" data-toggle="tooltip" title="Set of selections applied on events to define the dataset to analyse"> channel </button>, so the dataset is still dominated by tt events. Two things to do then: know your background very well and try to separate as much as you can from the signal!
+
+	<br><br><i style="color:black"> Separation? BDT! </i> We used a boosted decision tree. In other words: you define your even as a set of features and start cutting recursively on the features in order to maximize the separation between signal and background events, providing a tree structure of the series of decisions. The leaf of these structure would provide a value that give the probability of events to be from signal after fulfilling the conditions of the leaf. This is optimised in a series of trees that are combined to minimize the  mis-classification. Cool! The output, consisting of values from 0 to 1 would be a perfect discriminator between signal and background. What are the features to use? The ones that separate most the signal from the background:
+	<lu>
+	  <li> <b> Hardness </b> product decays from 4tops hit more the center of the detector (because the system is usually almost at rest), and usually are more energetic! </li>
+          <li> <b> Activity </b> 4tops give in average way more stuff in the detector, especially they give at least 4 b-jets, easy to detect as they decay late in the detector! </li>
+	  <li> <b> Topology </b> 4tops events should give four top quark decay chains, while tt only two plus soft radiation. </li>
+	</lu>
+	Look yourself at the improvement, blue and red are way more separated with the BDT!
+
+	<br><br><div class="text-center">
+	<b> An important feature </b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b> BDT </b> <br>
+ 	<img class="img-fluid float-center" src="img/physics/4tops/separation_jets.png" alt="..." style="background-size: cover;width: 40%;"/> &nbsp;&nbsp;
+	<img class="img-fluid float-center" src="img/physics/4tops/separation_bdt.png" alt="..." style="background-size: cover;width: 40%;"/>
+	</div><br><br>
+
+	<br><br><i style="color:black"> Background estimation </i> The background - and signal - predictions are based on MonteCarlo simulation, that mimic the kinematics of the events and include detector effects in their measurement. The discrepancy between simulation and data are calibrated out using some candle-processes. However, we are looking at a very remote corner of the dataset and simulations and calibrations may not hold there, and that's indeed what we observe, check out here below on the left.
+
+	<br><br><div class="text-center">
+	<img class="img-fluid float-center" src="img/physics/4tops/fig_04a.png" alt="..." style="background-size: cover;width: 40%;"/> &nbsp;&nbsp;
+	<img class="img-fluid float-center" src="img/physics/4tops/fig_04b.png" alt="..." style="background-size: cover;width: 40%;"/>
+	</div><br><br>
+
+	Therefore, we need to calibrate our background expectation. Since we do not expect - and been validated - the data-simulation discrepancy to depend on the number of b-jet in the event, we can parametrize the discrepancy as a function of event kinematics with events very low b-jet mulitplicity, that are not interesting. This works nicely indeed, as you see on the right! Moreover, notice how the uncertainties shrink! This is because we used data statistical precision to remove mismodelling in similar events to what we are interested in!
+
+
+	<br><br><i style="color:black"> Results </i> We used the binned distributions of the BDT at different jet and b-jet multiplicity of data and compared with our background plus signal prediction. A likelihood fit is performed in order to adjust the degrees of freedom of our model to agree with data. What are the degrees of freedom? Normalisation of the signal together with the normalisation of the background - namely three normalisations are associated to tt production with different flavour of the radiated jets. Also, statistical uncertainty of the simulation in each bin. Sources of uncertainties coming from theory, detector and calibrations are also included as in the fit as additional degrees of freedom. All of them are simultaneously measured: this let the model to adjust to data and coherently account for the correlations among all the model parameters. The inclusion of events at lower jet and b-jet mulitplicitis, where signal contribution is expected to be negligible, is important to constrain the parameters that affect the background in order to have a more precise background prediciton in the regions where signal is important. Look at the beautiful 4tops arising in the extreme bins of the BDT distribution in the most interesting events on the left, and in the bins ordered in sensitivity when combined with the previous analysis.
+	
+	<br><br><div class="text-center">
+	<img class="img-fluid float-center" src="img/physics/4tops/fig_07e.png" alt="..." style="background-size: cover;width: 40%;"/> &nbsp;&nbsp;
+	<img class="img-fluid float-center" src="img/physics/4tops/figaux_16.png" alt="..." style="background-size: cover;width: 47%;"/>
+	</div><br><br>
+
+	Wow, such an adventure to find it! By eye it seems to be there, but aren't we sure it is not an unfortunate fluctuation of data from tt? Well, we should be very unlucky, such fluctuation would occur only once every 1500 experiments. Also, notice that data favours a normalisation that is twice the Standard Model prediction! New physics? Be cautious, we may have been just unlucky, with a probablitiy of about 1/3.
+	
+    </div>
+  </div>
+</div>
+
+
