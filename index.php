@@ -42,8 +42,9 @@ require("init.php");
             <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
                 <div class="d-flex justify-content-center">
                     <div class="text-center">
-                        <h1 class="mx-auto my-0 text-uppercase">pasaba</h1>
-                        <h2 class="text-white-50 mx-auto mt-2 mb-5">physicist / data scientist</h2>
+                        <h1 class="mx-auto my-0 text-uppercase">pasaba.eu</h1>
+	                <h2 class="text-white-50 mx-auto">physicist / data scientist</h2>	
+        		<h2 class="text-white-50 mx-auto mt-2 mb-5">paolo sabatini</h2>
                         <a class="btn btn-primary" href="#about">about</a>
                     </div>
                 </div>
@@ -51,15 +52,39 @@ require("init.php");
         </header>
         <!-- About-->
         <section class="about-section text-center" id="about">
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
+	    <div class="container px-4 px-lg-5">
+
+	    <!--
+	        <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-8">
-                        <h2 class="text-white mb-4">Data do not lie, usually..</h2>
-                        <p class="text-white-50">
-                            Born in '91 in a small village on Monte Amiata (Italy), I am an experimental particle physicist, expert in big data analysis in multiple programming languages. I have been involved in several particle physics analyses using cutting-edge techniques, including machine learning. In love with learning new things, I have fun analysing data in a wide range of fields, from economics to sport.
+             	        <p class="text-white-50">
+                            Born in '91 in a small village on Monte Amiata (Italy).
+			    <br> I am an experimental particle physicist, expert in big data analysis in multiple programming languages.
+			    <br> I have been involved in several particle physics analyses using cutting-edge techniques, including machine learning.
+			    <br> In love with learning new things, I have fun analysing data in a wide range of fields, from economics to sport.
                         </p>
+			
                     </div>
                 </div>
+	  -->
+	        <div class="row gx-4 gx-lg-5 justify-content-center">
+		   <div class="col">
+  		     <ul class="text-white" style="text-align:left">
+		        <li>  Born in '91 in a small village on Monte Amiata (Italy). </li>
+			<li> I am an experimental particle physicist, expert in big data analysis in multiple programming languages. </li>
+			<li> I have been involved in several particle physics analyses using cutting-edge techniques, including machine learning. </li>
+			<li> In love with learning new things, I have fun analysing data in a wide range of fields, from economics to sport. </li>
+		     </ul>
+		   </div>
+ 		   <div class="col">
+		      <br><h2 class="text-white"> CV </h2><br>
+ 		      <a href="docs/cv/CV_IT.pdf"> <img src="img/index/italy_flag.png" width="120" height="80" style="filter: grayscale(75%)"> </a>
+       		      <a href="docs/cv/CV_EN.pdf"> <img src="img/index/uk_flag.png" width="120" height="80"  style="filter: grayscale(75%)"> </a>
+      		      <a href="docs/cv/CV_FR.pdf"> <img src="img/index/france_flag.png" width="120" height="80"  style="filter: grayscale(75%)"> </a>
+
+		   </div>
+		</div>
+		<br><br>
 
 		<svg class="points-test" viewbox="0 0 600 130">
   		  <circle r="10" cy="105" cx="50" fill="white" />
@@ -114,8 +139,8 @@ require("init.php");
                 </div>
                 <!-- Project One Row-->
                 <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
-                    <div class="col-lg-6"><img class="img-fluid" src="img/data.jpg" alt="..." style="background-size: cover;height: 100%;width: 100%;"/></div>
-                    <div class="col-lg-6">
+		    <div class="col-lg-6"><img class="img-fluid" src="img/data.jpg" alt="..." style="background-size: cover;height: 100%;width: 100%;"/></div>
+		    <div class="col-lg-6">
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
                                 <div class="project-text w-100 my-auto text-center text-lg-left">
