@@ -31,8 +31,9 @@ require("init.php");
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="#about">about</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#projects">projects</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#portfolio">portfolio</a></li>
+		        <li class="nav-item"><a class="nav-link" href="#news">news</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">contacts</a></li>
                     </ul>
                 </div>
             </div>
@@ -53,27 +54,13 @@ require("init.php");
         <!-- About-->
         <section class="about-section text-center" id="about">
 	    <div class="container px-4 px-lg-5">
-
-	    <!--
-	        <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-8">
-             	        <p class="text-white-50">
-                            Born in '91 in a small village on Monte Amiata (Italy).
-			    <br> I am an experimental particle physicist, expert in big data analysis in multiple programming languages.
-			    <br> I have been involved in several particle physics analyses using cutting-edge techniques, including machine learning.
-			    <br> In love with learning new things, I have fun analysing data in a wide range of fields, from economics to sport.
-                        </p>
-			
-                    </div>
-                </div>
-	  -->
 	        <div class="row gx-4 gx-lg-5 justify-content-center">
 		   <div class="col">
   		     <ul class="text-white" style="text-align:left">
 		        <li>  Born in '91 in a small village on Monte Amiata (Italy). </li>
 			<li> I am an experimental particle physicist, expert in big data analysis in multiple programming languages. </li>
 			<li> I have been involved in several particle physics analyses using cutting-edge techniques, including machine learning. </li>
-			<li> In love with learning new things, I have fun analysing data in a wide range of fields, from economics to sport. </li>
+			<li> In love with learning, I have fun analysing data in a wide range of fields, from economics to sport. </li>
 		     </ul>
 		   </div>
  		   <div class="col">
@@ -124,16 +111,18 @@ require("init.php");
 		</svg>
             </div> <br> <br>
         </section>
-        <!-- Projects-->
-        <section class="projects-section bg-light" id="projects">
+        <!-- Portfolio-->
+        <section class="projects-section bg-light" id="portfolio">
             <div class="container px-4 px-lg-5">
                 <!-- Featured Project Row-->
                 <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="img/bubble-chamb.jpg" alt="..." /></div>
                     <div class="col-xl-4 col-lg-5">
                         <div class="featured-text text-center text-lg-left">
-                            <a href="physics.php"> <h4>Physics</h4> </a>
-                            <p class="text-black-50 mb-0">Short summaries of my favourite papers</p>
+                            <a href="physics.php"> <h4>High-energy particle physics</h4> </a>
+                            <p class="text-black-50 mb-0">
+			    <br>  Summaries with links of my professional work as <b> particle phycisist </b> within the ATLAS Experiment at CERN. <br><br> Click here to learn more about data analyses <b> new processes </b> in high-energy physics, search of <b> dark matter </b> and how to keep a massive detector <b> aligned at micro-meter precision level </b>. 
+			    </p>
                         </div>
                     </div>
                 </div>
@@ -144,8 +133,8 @@ require("init.php");
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
                                 <div class="project-text w-100 my-auto text-center text-lg-left">
-                                    <h4 class="text-white"> <a href="fun.php"> Fun </a> </h4>
-                                    <p class="mb-0 text-white-50"> Some of my free-time data analyses and programming projects</p>
+                                    <a href="fun.php"> <h4 class="text-white"> Parallel projects </h4> </a> 
+                                    <p class="mb-0 text-white-50"><br> Collection with repositories and docs of my past and ongoing parallel projects. <br><br> They concern of <b> software development </b>, <b> machine learning</b> studies and <b>data analyses</b> on several fields. </p>
                                     <hr class="d-none d-lg-block mb-0 ms-0" />
                                 </div>
                             </div>
@@ -159,8 +148,11 @@ require("init.php");
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
                                 <div class="project-text w-100 my-auto text-center text-lg-right">
-                                    <h4 class="text-white">Podcast</h4>
-                                    <p class="mb-0 text-white-50"> EQN is a science outreach podcast exploring the humans behind revolutions in science. <br><br> stay tuned..</p>
+                                    <h4 class="text-white">Outreach</h4><br>
+                                    <p class="mb-0 text-white-50"> The long term project is to create some media content about my passions: <b>physics</b>, <b>science</b> and <b>data analysis</b>.<br><br>
+				    EQN is a science outreach podcast exploring the humans behind revolutions in science. Stay tuned. 
+				    
+				    </p>
                                     <hr class="d-none d-lg-block mb-0 me-0" />
                                 </div>
                             </div>
@@ -169,12 +161,43 @@ require("init.php");
                 </div>
             </div>
         </section>
+
+	<!-- News -->
+	
+	<section class="news-section" style="display:flex; background: linear-gradient(to bottom, rgba(0, 0, 0, 0.005) 0%, rgba(0, 0, 0, 0.5) 50%, #000 100%)" id="news">
+	  <div class="container px-4 px-lg-5">
+        
+	  <h2 class="text-black" style="padding:10px"> News </h2>
+
+	  <!-- Card 1 -->
+	  <div class="card mb-4 bg-light" >
+	    <div class="row">
+
+	      <div class="col-md-2">
+	        <div align="center" class="spinner-grow m-5 text-primary" style="width: 3.5rem; height: 3.5rem;" role="status">	</div>
+              </div>
+
+	      <div class="col-md-10"  style="margin-left:0px">
+	        <div class="card-body">
+		<h5 class="card-title"> <a href="https://paolosabatini.github.io/fanta-voto-ai/"> Preliminary results on FantaAI </a> </h5>
+		<p class="card-text"> Despite several models have been tested and tuned (GBDT and NN) on the available open-acces data, no satisfactory prediction is obtained. The cause has found to be the poor quality and statistics of available dataset. 
+		<p class="card-text"><small class="text-muted">October 31st, 2022</small></p>
+		</div>
+	      </div>
+
+	    </div>
+	  </div>	
+	<br>
+	</div>
+	</section>
+	
         <!-- Contact-->
         <section class="contact-section bg-black" id="contact">
             <div class="container px-4 px-lg-5">
+
 	      
 	      <div class="row gx-4 gx-lg-5 justify-content-center">
-                    
+	      <h2 class="text-white" style="padding:10px" align="center"> Contacts </h2>                   
                     <div class="col-md-4 mb-3 mb-md-0">
                         <div class="card py-4 h-100">
                             <div class="card-body text-center">
@@ -182,6 +205,16 @@ require("init.php");
                                 <h4 class="text-uppercase m-0">Email</h4>
                                 <hr class="my-4 mx-auto" />
                                 <div class="small text-black-50"><a href="#!">paolosbtn@gmail.com</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-phone text-primary mb-2"></i>
+                                <h4 class="text-uppercase m-0">Mobile</h4>
+                                <hr class="my-4 mx-auto" />
+                                <div class="small text-black-50"><a href="#!">+39 3385968853</a></div>
                             </div>
                         </div>
                     </div>
