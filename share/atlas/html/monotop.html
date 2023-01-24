@@ -1,0 +1,339 @@
+<h2> Searches for monotop signatures with the ATLAS experiment </h2>
+<br>
+
+<!-- table of content -->
+<h4> Table of contents </h4><br>
+<div class="container px-4 px-lg-5" style="margin:10px">
+<div class="list-group">
+  <button type="button" class="list-group-item"> <a href="#status">   Status of the analysis </a>  </button> 
+  <button type="button" class="list-group-item"> <a href="#action-items">  From CONF to Paper: action items </a> </button>
+  <button type="button" class="list-group-item"> <a href="#ntuple">  Ntuple production  </a> </button>
+  <button type="button" class="list-group-item"> <a href="#fit">  Fit procedure & tips </a> </button>
+  <button type="button" class="list-group-item"> <a href="#2dmaps">  2D contours </a>  </button>
+  <button type="button" class="list-group-item"> <a href="#generation">  DM generation </a> </button>
+  <button type="button" class="list-group-item"> <a href="#resources">  Resources </a> </button>
+</div>
+</div>
+
+
+<!-- status -->
+<br><br>
+<h4 id="status" name="status"> Status of the analysis </h4> <br>
+<div class="container px-4 px-lg-8 justify-content-center" style="margin:10px">
+  The analysis has been published as a <a href="https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/CONFNOTES/ATLAS-CONF-2022-036/"> CONF note </a> - and presented at ICHEP. Since the analysis was published as <i> terminal conf </i>, therefore the following paper will go under three reviews. This was motivated by the impossibility of providing 2D limit maps of the model parameters timely for ICHEP.  <br><br>
+
+  The new glance of the paper is <a href="https://atlas-glance.cern.ch/atlas/analysis/analyses/details?id=9281"> this one </a> with corresponding drafts of the internal note and paper. Currently (see last update date), the internal note is filled with the content of the CONF note internal note, and the main body is expanded with:
+
+ <ul style="margin:5px">
+   <li> New monotop sample description </li>
+   <li> Brief description of the reweighting procedure (a la paper) </li>
+   <li> Placeholder and description of the preliminary results for the 2D maps (VLQ and DM) </li>
+ </ul>
+
+ <br>
+ Similarly, these contents are included in the paper draft. However, this is not yet ported into the new repository, but still pushed in the paper repo of the old conf note draft (<a href="https://gitlab.cern.ch/atlas-physics-office/EXOT/ANA-EXOT-2020-05/ANA-EXOT-2020-05-PAPER/">this one</a> under the branch <i> paper-updates </i>). <br><br>
+
+ The goal is to include the "action items" that are listed in the following section in the paper draft, get the EB & HQT approval to circulate in ATLAS asap.
+					 
+</div>
+
+
+<!-- action items -->
+
+<br><br>
+<h4 id="action-items" name="action-items"> From CONF to Paper: action items </h4> <br>
+<div class="container px-4 px-lg-8 justify-content-center" style="margin:10px">
+  The action items have been summarised into the <a href="https://its.cern.ch/jira/projects/ATLMONOTOP/issues/ATLMONOTOP-31?filter=allopenissues"> board under the monotop JIRA </a>. Here, I will list the main items and the corresponding status/to-do. <br>
+  
+  <ul class="list-unstyled" style="margin-top:10px">
+
+    <li>
+      <b> DM modelling systematics </b>
+      <ul>
+	<li> <a style="color:green"> Status </a> scale systematics for the DM models are included in the fit model (Yunjian last fit setup). No significant change in results. </li>
+	<li> <a style="color:orange"> To-do </a> run the finalized fit. </li>
+      </ul>
+    </li>
+    <br>
+    
+    <li>
+      <b> Reweighting procedure / systematics</b>
+      <ul>
+	<li> <a style="color:green"> Status </a> preliminary version ready, and first systematics available. More refined version to come with new truth & reco samples. Here the links to <a href="https://its.cern.ch/jira/browse/ATLMCPROD-10350"> MC request </a>, <a href="https://its.cern.ch/jira/browse/EXOTPROD-284"> TRUTH3 request </a> and <a> EXOT7 request  (to come once "3-tags" are ready) </a>. </li>
+	<li> <a style="color:orange"> To-do </a> Finalize the reweighting procedure and systematics with the new MC samples. </li>
+      </ul>
+    </li>
+    <br>
+
+    <li>
+      <b> DM 2D limit maps </b>
+      <ul>
+	<li> <a style="color:green"> Status </a> Code for the production is ready. </li>
+	<li> <a style="color:orange"> To-do </a> Produce once the final values of the limits (from reweighting) are ready. </li>
+      </ul>
+    </li>
+    <br>
+
+    <li>
+      <b> VLQ 2D limit maps </b>
+      <ul>
+	<li> <a style="color:green"> Status </a> Code for the production is ready for both 2D map and coherent visualization as the other VLQ searches. </li>
+	<li> <a style="color:orange"> To-do </a> Finalize them (but basically done). Understand flattening of limits at low kT (probably non trivial dependency on sigma vs. kT) </li>
+      </ul>
+    </li>
+
+    <li>
+      <b> K-factor DM models </b>
+      <ul>
+	<li> <a style="color:green"> Status </a> Studies on availability of kinematic k-factor are finished and documented (?). </li>
+	<li> <a style="color:orange"> To-do </a> Finalize them (but basically done). Understand flattening of limits at low kT (probably non trivial dependency on sigma vs. kT) </li>
+      </ul>
+    </li>
+
+  </ul>
+
+  
+</div>
+
+<!-- ntuple production -->
+
+<br><br>
+<h4 id="ntuple" name="ntuple"> Ntuple production </h4> <br>
+<div class="container px-4 px-lg-8 justify-content-center" style="margin:10px">
+  Hopefully, background samples are freezed and available to anybody - at least the background and signal samples. They are available at this path <code>/eos/user/p/psabatin/tmp/monotop/ntuples </code> for analysis memebers and publicly at <a href="https://cernbox.cern.ch/s/juZWXzVDzYbpYAl"> this link </a>.<br><br>
+
+  <a style="color:orange"> Warning </a>: in case yields/fit results do not match with the paper ones, it may due to two main suspects:
+  <ul>
+    <li> Diboson sample (363489) missing for mc16e (due to disk failure on IFIC end).  Results corrected by the normalisation scaled up to 139/80.
+    <li> Z->nunu samples (364142-364155) <b> do not exist </b> for mc16e. Results corrected by the normalisation scaled up to 139/80.
+  </ul>
+
+  In case of these problems, please get in touch with Yunjian, Josep or Adrian who have a correct ntuple+fit setup. Otherwise, look at the corresponding fit setup used for the note in the resources below. <br> <br>
+
+  In case of need of reproduction of some ntuples, the framework is <a href="https://gitlab.cern.ch/psabatin/monopy2/-/tree/master/run">monopy</a>. Some tips on this:
+  <ul>
+    <li> You want to use new DSIDs? Remember to add them into <code> samples_DB.csv </code> and <code> config/XSection-MC16-13TeV.data </code>
+    <li> The code crashes because BDT not found by using <code>monopyBatch</code>? Check the paths <a href="https://gitlab.cern.ch/psabatin/monopy2/-/blob/master/run/monopyBatch.py#L54">here</a>
+    <li> You want to add another variable in the output? Define the corresponding definition in <a href="https://gitlab.cern.ch/psabatin/monopy2/-/blob/master/run/lib/monopyPhysics.py">monopyPhysics</a> and remember to add it to <a href="https://gitlab.cern.ch/psabatin/monopy2/-/blob/master/run/config/varList.ini">varList.ini</a>, otherwise the <code>ini</code> do not have the information of adding it when called by monopy.
+    <li> Tip on monopyBatch: systematics are parallelized over group of Systematics defined <a href="https://gitlab.cern.ch/psabatin/monopy2/-/blob/master/run/config/SystematicsList.config">here</a>. Therefore, if your jobs are taking long on a set of systematics, you may consider to split it. Note, you will get more but hopefully quicker jobs.
+    <li> Another tip on monopyBatch: you want to test it running, or run it locally? Just <code>./batch_mysuffix/myjob.sh</code> to run it (all setup and launch command are in the shell script).
+  </ul>
+  
+</div>
+
+
+<!-- fit setup & correlated -->
+
+<br><br>
+<h4 id="fit" name="fit"> Fit procedure & tips </h4> <br>
+<div class="container px-4 px-lg-8 justify-content-center" style="margin:10px">
+  My whole fit infrastructure, input, output and things are mostly within <code>lustre</code> and <code>altui</code>:
+  <ul>
+    <li> Inis (i.e. ini files for monopy): <code>/lustre/ific.uv.es/grid/atlas/t3/psabatin/Monotop/config</code></li>
+    <li> Unskimmed ntuples: <code>/lustre/ific.uv.es/grid/atlas/t3/psabatin/Monotop/root</code></li>
+    <li> Skimmed ntuples: <code>/lustre/ific.uv.es/grid/atlas/t3/psabatin/Monotop/results</code></li>
+    <li> TRexFitter configs: <code>/lustre/ific.uv.es/grid/atlas/t3/psabatin/Monotop/trex</code></li>
+    <li> Main fitting (running folder with outputs): <code>/lhome/ific/p/psabatin/monoTop/monopy2/fit</code></li>
+    <li> Backup of previous fits: <code>/lustre/ific.uv.es/grid/atlas/t3/psabatin/backup/monotop/fits</code></li>
+  </ul>
+
+  <br>
+  The commands (along with the config setups) for the production of the results in the int-note are condensed in the shell scripts:
+  <ul>
+    <li> Studies on bliding configurations: <code>/lhome/ific/p/psabatin/monoTop/monopy2/fit/*blinding*sh</code> </li>
+    <li> Steps towards full unblinding: <code>/lhome/ific/p/psabatin/monoTop/monopy2/fit/steps_crsr_unblinding.sh</code> </li>
+    <li> All content of the conf-note: <code>/lhome/ific/p/psabatin/monoTop/monopy2/fit/run_paper_plots.sh</code> </li>
+    <li> All CR-VR plots in the int-note: <code>/lhome/ific/p/psabatin/monoTop/monopy2/fit/run_all_regions_crvr_unblinded.sh</code> </li>
+    <li> Plot mass scan (only the fits): <code>/lhome/ific/p/psabatin/monoTop/monopy2/fit/run_all_afterexot.sh</code></li>
+  </ul>
+  In general, the conf-note results are obtained with the setup flagged with the <code>__forPaper</code>. Note that the VLQ has the further flag of <code>fjge40</code>, meaning the cut of the forward-jet with the pT>40 GeV (reduce pileup dependency).
+  <br>
+  Now a bit of explaination of scripts you may find useful, that you can find in <code>/lhome/ific/p/psabatin/monoTop/monopy2/fit</code>.
+
+  <br><br><br>
+  <h5> batchReader.py </h5>
+  <div class="container px-4 px-lg-8 justify-content-center" style="border: 2px solid black; padding: 4px"> 
+  This speeds up the reading of the ntuples to create the histograms input to TRexFitter.
+  <pre><code>
+      python batchReader.py -c /path/to/trex/config -o Option:Value
+  </code></pre>
+  This let the creation of the batch scripts to read all the regions in parallel specified in the config in input. The additional TRexFitter option is added in the reading, e.g. if we want to exclude some systematics we can add <code>Exclude:SystName</code>.
+  </div>
+
+
+  <br>
+  <h5> spotOneSided.py </h5>
+  <div class="container px-4 px-lg-8 justify-content-center" style="border: 2px solid black; padding: 4px"> 
+  Given some fit folder (after reading the ntuples into histograms), it checks all the systematics for the samples that are defined in the <code>__SAMPLE__</code> at the beginning of the file. 
+  <pre><code>
+      python spotOneSided.py -f /path/to/folder/of/the/attempted/fit -r comma,separated,list,of,regions,to,check -s suffix_of_the_histograms_to_check
+  </code></pre>
+  This returns a text file with the list of the systematics that are both on one side.
+  </div>
+
+  <br>
+  <h5> create_my_asimov.py </h5>
+  <div class="container px-4 px-lg-8 justify-content-center" style="border: 2px solid black; padding: 4px"> 
+  Creates a custom asimov sample (pseudo-data) using a systematic variation, e.g. a b-tagging systematic variation. It adds it into the histograms of the folder that are defined at the beginning of the script.
+  <pre><code>
+      python create_my_asimov.py
+  </code></pre>
+  All the variables (samples, variation to use and fit folder) are defined at the beginning of the script.<br>
+  <a style="color:orange"> Warning:</a> does the following fit using the pseudo data crash? Try to run the <code>b</code> step again.
+  </div>
+
+  <br>
+  <h5> extractLimits.py </h5>
+  <div class="container px-4 px-lg-8 justify-content-center" style="border: 2px solid black; padding: 4px"> 
+  It takes all the limits from several folders and dump them into a json file, easier to use.
+  <pre><code>
+      python extractLimits.py /path/to/limit/file1.root path/to/limit/file2.root ...
+  </code></pre>
+  All the root files tha are passed are dumped into a json file. You can pass also wildcard, e.g. </code> ./NTUP_MonotopRes__forPaper/Limits/*/limit_file_MonotopRes_mMed*.root</code>.
+  </div>
+
+  <br>
+  <h5> extract_uncertainties_from_histo.py </h5>
+  <div class="container px-4 px-lg-8 justify-content-center" style="border: 2px solid black; padding: 4px"> 
+  It checks a systematic variation, and construct a script that evaluate that variation (used for PDF). 
+  <pre><code>
+      python extract_uncertainties_from_histo.py -f /path/to/fit/folder -r comma,separated,list,of,control,or,signal,regions -v comma,separated,list,of,validation,region -s suffix_of_histos_to_read
+  </code></pre>
+  <a style="color:orange"> Warning:</a> Ask Adrian, as he developed this script further.
+  </div>
+
+  <br>
+  <h5> getNPValues.py </h5>
+  <div class="container px-4 px-lg-8 justify-content-center" style="border: 2px solid black; padding: 4px"> 
+  It reads the fit txt file in input and convert it to a string to give in input to <code>NPValues</code> (maybe <b> dismissed </b>).
+  <pre><code>
+      python getNPValues.py /path/to/fit/txt/file.txt
+  </code></pre>
+  </div>
+
+  <br>
+  <h5> make_signal_blocks.py </h5>
+  <div class="container px-4 px-lg-8 justify-content-center" style="border: 2px solid black; padding: 4px"> 
+  It creates a txt file with all the trex-fitter sample blocks corresponding to all the signal root files given in inputs.
+  <pre><code>
+      python make_signal_blocks.py /path/to/signal/root/files/Monotop*root
+  </code></pre>
+  </div>
+
+  <br>
+  <h5> parallelLimit.py </h5>
+  <div class="container px-4 px-lg-8 justify-content-center" style="border: 2px solid black; padding: 4px"> 
+  It runs the limit on different signals in the specified configuration file in parallel
+  <pre><code>
+      python parallelLimit.py /path/to/config/
+  </code></pre>
+  It loops over all the signal blocks specified in the configuration file and it creates the submission scripts to run all the limits in parallel. To submit then, just do <code> condor_submit LIM_some_suffix.sub</code>
+  </div>
+
+  <br>
+  <h5> pop_my_uncertainties_to_table.py </h5>
+  <div class="container px-4 px-lg-8 justify-content-center" style="border: 2px solid black; padding: 4px"> 
+  This script was used to "produce" the tables of the post-fit uncertainties, categorized by different sources. Just change the <code>_type_</code> in the first line of the script.
+  <pre><code>
+      python pop_my_uncertainties_to_table.py
+  </code></pre>
+  All the folder, regions etc.. are hard coded in the first lines of the script for each type of the model. It symmetrize the impact of the systematic to provide a single number for each sample/region and it creates a tex file. 
+  </div>
+
+  <br>
+  <h5> runRanking.py </h5>
+  <div class="container px-4 px-lg-8 justify-content-center" style="border: 2px solid black; padding: 4px"> 
+  It creates the submission script to run the ranking on different NPs in parallel, it reduces drastically the time for a ranking.
+  <pre><code>
+      python runRanking.py -s suffix_to_use -S signal_to_use /path/to/config
+  </code></pre>
+  It takes the config in input, and using the fit setup for the suffix and signal given in input to make the submission scripts to run the ranking.
+  </div>
+
+  <br>
+  <h5> separeYields.py </h5>
+  <div class="container px-4 px-lg-8 justify-content-center" style="border: 2px solid black; padding: 4px"> 
+  Create the table of the yields for a given txt file of table in input for a given region.
+  <pre><code>
+      python separeYields.py -f /path/to/txt/file/of/table/from/trex -r region
+  </code></pre>
+  This helps, as the Table txt have allt he regions.
+  </div>
+
+  <br>
+  <h5> stack_to_asimov.py </h5>
+  <div class="container px-4 px-lg-8 justify-content-center" style="border: 2px solid black; padding: 4px"> 
+  Use a given set of samples to create the pseudo-data asimov sample.
+  <pre><code>
+      python stack_to_asimov.py
+  </code></pre>
+  All is configured in the first lines of the code: samples to stack with corresponding SFs, folder to read and suffix to use in the data block.
+  <br> <a style="color:orange"> Warning:</a> does the following fit using the pseudo data crash? Try to run the <code>b</code> step again.
+  </div>
+
+</div>
+
+
+<!-- fit setup & correlated -->
+
+<br><br>
+<h4 id="2dmaps" name="2dmaps">  2D contours </h4> <br>
+<div class="container px-4 px-lg-8 justify-content-center" style="margin:10px">
+  The whole chain for the creation of 2D maps is documented in <a href="https://indico.cern.ch/event/1188511/contributions/4994804/attachments/2490032/4275991/MM_220805.pdfx">these slides</a>, and the main scripts are stored here <code>/afs/cern.ch/user/p/psabatin/public/Monotop2D</code> with a little instructions. Here, I want to summarize the whole workchain from skimmed ntuples of new samples to 2D limit map.
+  <br><br>
+  <ul>
+    <li> <b> Prerequisites </b> a working configuration file for a benchmark fit on a signal sample </li>
+    <li> <b> Step 1: add signal blocks </b> automatically create all the needed blocks to <code>make_signal_blocks.py</code>. </li>
+    <li> <b> Step 2: read the samples </b> use <code>batchReader.py</code> with <code>Samples:signal_wildcard*</code> as extra option. </li>
+    <li> <b> Step 3: run limits </b> use <code>parallelLimit.py</code> to run the fit and limits in parallel on all the signal samples. </li>
+    <li> <b> Step 4: extract limits to json </b> use <code>extractLimit.py</code> to dump the limits to json file. </li>
+    <li> <b> Step 5: make the plot </b> use <code>doLimitPlot.py</code> to create the limit plot from the json in input, <br> e.g. <code>python doLimitPlot.py -i data/json.json -v mphi:lb </code> </li>       
+  </ul>
+
+
+</div>
+
+
+<!-- generation -->
+
+<br><br>
+<h4 id="generation" name="generation">  DM generation </h4> <br>
+<div class="container px-4 px-lg-8 justify-content-center" style="margin:10px">
+  I collect all the scripts and instructions for a semi-automated generation of monotop DM samples within Athena. The main scripts are collected under <code>/lhome/ific/p/psabatin/monoTop/signGrid/truth3/mcrequest2211</code>. Here the explanation of the several steps.
+  <br><br>
+  <ul>
+    <li> <b> templates:</b> it contains the base jOs, that takes the parameters to generate from the phys_short description. </li>
+    <li> <b> generate_jOs:</b> the parameters of the samples to generate are collected in <code>simulation_points</code> dictionary at the beginning of the script. It creates the <code>100xxx</code> folder with automatically allocated DSIDs subfolders with all the needed jOs.</li>
+    <li> <b> local_test:</b> you can test the jOs in an environment like this. You copy your subfolder of the jO in a different directory and use <code>setup.sh</code> to setup the Athena environment, <code>./run XXXXXX</code> to generate the sample and <code>./clean</code> to clean the folder from the generated files.</li>
+    <li> <b>launch/evnt_to_grid.py</b> is the script to submit the jOs to be produced on the grid for testing. You can enter the dir <code>launch</code> and launch <code>python evnt_to_grid.py /path/to/100xxx</code>. Of course, setup the environment before with the setup script.    
+  </ul>
+
+
+</div>
+
+
+<!-- resources -->
+<br><br>
+<h4 id="resources" name="resources">  Resources </h4> <br>
+<div class="container px-4 px-lg-8 justify-content-center" style="margin:10px">
+  Here, some resources random, that you may find useful to check-out, but either old/not-used-a-lot or already covered in the previous section. In case of SimpleAnalysis implementation/output, please get in touch with Yunjian who has a more recent/uptaded version, here only the first drafts are available. Same for the reweighting procedure.
+
+  <br><br>
+  <ul>
+    <li> <code>/lhome/ific/p/psabatin/monoTop/TRExFitter</code>: path to the TRexFitter code that you are probably using </li>
+    <li> <code>/lhome/ific/p/psabatin/monoTop/2hdm/plotter2HDM</code>: quite nice code to analyse ROOT ntuples in python and create histograms. It was used for some tests in 2HDMa/tWMET analysis, but can be adapted to anything (I guess). </li>
+    <li> <code>/lhome/ific/p/psabatin/monoTop//acceptance_res</code>: code to study the acceptance effect in the resonant DM production. </li>
+    <li> <code>/lhome/ific/p/psabatin/monoTop/multijet</code>: code to study the multijet bkg in monotop: there is <code>studyMultiJet.py</code> to create the histograms and <code>fitMET.py</code> to fit the MET and estimate the multijet yields. </li>
+    <li> <code>/lhome/ific/p/psabatin/monoTop/quick_plotter</code>: code to make quick and configurable plots of trees, basically with TTree->Draw(). </li>
+    <li> <code>/lhome/ific/p/psabatin/monoTop/reweighting</code>: initial implementation of the code for the reweighting, further developed by Yunjian (ask him in case). It consists of generation of the EVNT and TRUTH3 samples, the SimpleAnalysis implementation of the analysis to create the histograms and eventually the <code>compute</code> code to get the weights from the SimpleAnalysis output and plot them. <br><small> Actually the SimpleAnalysis code with example run folder is here: <code>/lhome/ific/p/psabatin/monoTop/signGrid/truth3/SimpleAnalysis/SimpleAnalysis/</code></small> </li>
+    <li> <code>/lhome/ific/p/psabatin/monoTop/signGrid/corrections</code> code to evaluate a correction TRUTH->RECO to be applied as efficiecny in SimpleAnalysis. </li>
+    <li> <code>/lhome/ific/p/psabatin/monoTop/signGrid/cutFlow</code> plot the cutFlow of signal samples (probably from SimpleAnalysis output). </li>
+    <li> <code>/lhome/ific/p/psabatin/monoTop/signGrid/shapeComparison</code> compare the shape of truth samples out of SimpleAnalysis. </li>
+    <li> <code>/lhome/ific/p/psabatin/monoTop/signGrid/signalEffMap</code> plotting the efficiency map of the truth signal samples out of SimpleAnalysis. </li>
+    <li> <code>/lhome/ific/p/psabatin/monoTop/signGrid/validRwgt</code> plot to validate the reweighting procedure: compare the reweighted samples with the target to evaluate the non-closure. </li>
+    <li> <code>/lustre/ific.uv.es/grid/atlas/t3/psabatin/ntuples</code> a lot of aux ntuples: old versions of SimpleAnalysis, truth, EXOT7 derivations, analysis-top samples etc.. </li>
+    <li> <code>/lustre/ific.uv.es/grid/atlas/t3/psabatin/tmp/monotop_weights/monotop</code> internal weights of the monotop DM and VLQ samples for decoding.
+  </ul>
+  
+
+</div>
