@@ -47,8 +47,7 @@ require ("../../init.php");
 	   <p align="left" style="color:gray">
 	     Ciao! Here you can find some pages that can collect some info regarding some of the activities in ATLAS <br> This info are restricted, technical & boring.
 	   </p>
-           <div class="card mb-4 bg-light" >
-	     <?php
+             <?php
 	       class Article {
 	         public $title; public $date; public $link;
 		 public function  __construct($title, $date, $link) {
@@ -60,28 +59,32 @@ require ("../../init.php");
 	       
 	       $articles = array();
 	       $articles[] = new Article ("Monotop searches", "last update: 24/01/2023", "monotop.html");
+      	       $articles[] = new Article ("ID alignment", "last update: --/--/----", "idali.html");
+       	       $articles[] = new Article ("CalRatio searches", "last update: --/--/---", "calratio.html");
 
 	       
 	       foreach ($articles as $article) {
 	     ?>
+	     
 
-
+	    
              <div class="row">
-	       <div class="col-md-10"  style="margin-left:0px">
-	         <div class="card-body">
+	      <div class="card mb-4 bg-light" >
+	       <div class="col-md-10"  style="margin-left:10px">
+	         <div class="card-body" style="margin-top:10px;margin-bottom:10px">
 		   <?php
 		     echo '<h5 class="card-title"> <a href="post-mortem-content.php?article=' . $article->link . '">' . $article->title . ' </a> </h5>';
 		     echo '<p class="card-text"><small class="text-muted">' . $article->date . '</small></p>';
 		   ?>
 		 </div>
 	      </div>
-
+             </div>	
 	    </div>
-
+	    
 	     <?php
 	     }
 	     ?>
-       	  </div>	
+
 
 	 </div>
 	 <div class="row gx-4 gx-lg-5 justify-content-center" style="margin:20px"> <!-- here the card go -->
