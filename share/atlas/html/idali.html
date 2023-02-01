@@ -1,23 +1,259 @@
-<h2> ID Alignment  </h2>
+ <h2> Alignment of the ATLAS Inner Detector  </h2>
 <br>
 
 <!-- table of content -->
 <h4> Table of contents </h4><br>
 <div class="container px-4 px-lg-5" style="margin:10px">
 <div class="list-group">
-  <button type="button" class="list-group-item"> <a href="#">   tmp </a>  </button> 
+  <button type="button" class="list-group-item"> <a href="#activities"> (Unfinished) activities </a>  </button>
+  <button type="button" class="list-group-item"> <a href="#db"> Some DB tips and docs </a>  </button>
+  <button type="button" class="list-group-item"> <a href="#weakmode"> Weakmodepackage @ atlidali </a>  </button>
+  <button type="button" class="list-group-item"> <a href="#ific"> Resources at IFIC </a>  </button>
+  <button type="button" class="list-group-item"> <a href="#eos"> Resources on EOS </a>  </button>   
+  <button type="button" class="list-group-item"> <a href="#references"> Useful references </a>  </button>
 </div>
 </div>
 
-
-<!-- status -->
+<!-- activities -->
 <br><br>
-<h4 id="" name=""> tmp </h4> <br>
+<h4 id="references" name="references"> (Unfinished) activities </h4> <br>
 <div class="container px-4 px-lg-8 justify-content-center" style="margin:10px">
-tmp
+  Unfortunately, I might left some work unfinished - hopefully not critical for ATLAS ops. <br>
+  Here, some instructions and references in case you need to get up-and-running with that!
+  <br><br>
+  <h5> COOLOFL writing scheme migration </h5>
+  <p>
+    Some new service for writing the DB is being "developed" or prepared - honestly I do not know the reason.
+    It consists in replacing the usual <code>AtlCoolCopy</code> and <code>AtlCoolMerge</code> with two other commands that are documented in thie <a href="https://gitlab.cern.ch/formica/coolflask">repo</a> and this <a href="https://its.cern.ch/jira/browse/ATCONDDB-63">JIRA</a>.<br>
+    We should test whether these two new commands work fine for us pushing to INDET and TRT, and two jiras (<a href="https://its.cern.ch/jira/browse/ATCONDDB-89">INDET</a>, <a href="https://its.cern.ch/jira/browse/ATCONDDB-87">TRT</a>) to follow-up the progress with the two experts <emph>A. Formica</emph> and <emph>M. Vogel</emph>.
+  </p>
+
+  <b> <a style="color:green"> Status </a> </b>
+  <p>
+  Tests of the new commands are in <code>atlidali</code> here: <code>/afs/cern.ch/user/a/atlidali/w0/calibLoop/checker/CalibrationLoop2016/DynamicIDAlignDBToolsRun3/diary/new_coolofl_flask</code>.<br>
+  The idea of the test is explained in the first comment of <a href="https://its.cern.ch/jira/browse/ATCONDDB-89">this JIRA</a>. Initially, I thought to use the new service also to read and copy locally the files, but since they are only made for writing the database, I created two local DBs using the usual <code>AtlCoolCopy</code>. In few words, the idea is to:  </p>
+  <ul>
+    <li> Step 1: copy FlaskCopyTest.db into the remote DB (the test <code>INT8</code> db) with <code>AtlCoolCopy</code> on the tag <code>AlignL1ID-FlaskTagTest</code></li>
+    <li> Step 2: merge FlaskCopyTestNewRun.db into the remote DB (the test <code>INT8</code> db) with <code>AtlCoolMergeFlask</code> on the same tag <code>AlignL1ID-FlaskTagTest</code></li>
+  </ul>
+  This should cover the whole case studies for us. At the moment, the new <code>AtlCoolCopy</code> worked successfully, but impossible to check whether the writing on <code>INT8</code> was as expected (<code>INT8</code> only for writing, not for reading).
+  </p>
+
+  <b> <a style="color:orange"> To-do </a> </b>
+  <p>
+    Ping again on this problem here <a href="https://its.cern.ch/jira/browse/ATCONDDB-89">this JIRA</a>. Check the content of the <code>AlignL1/ID</code> if the same as <code>FlaskCopyTest.db</code>. Move to Step 2. Repeat for TRT on teh corresponding <a href="https://its.cern.ch/jira/browse/ATCONDDB-87">jira</a>. When this is validated and frozen, use them in <code>~/w0/calibLoop/checker/CalibrationLoop2016/DynamicIDAlignDBToolsRun3/CalibrationLoopChecker.py</code> for the automatic update of the constants.
+  </p>
+
+  <br><br>
+  <h5> Radiation damage effect in the alignment </h5>
+  <p>
+    The idea is to quantitatively evaluate the effect the radiation damage in the alignment constants. The two studies that were initially thought are:
+    <ul>
+      <li> <b>Lorentz-angle drift</b>: this would produce a "rotation" of the IBL depending on eta. Therefore, for a given fixed L3 constant period, this should be compensated by the bowing, ending up in a drifting of the bowing with luminosity from the expected bowing from the operational temperature. </li>
+      <li> <b>Degraded charge collection at large angle</b>: radiation damage reduces the efficiency of charge collection from far in the depth of the sensor. Therefore, you may losing hits at large eta, bringing a "shrinking" of the stave. Since this DoF is just at L3 that is done on larger stats, dedicated alignment only with Ty for pixels for some runs along Run2 could be done to see if there is a systematic effect with lumi.</li>
+    </ul>
+    There are two other ideas to test:
+    <ul>
+      <li> <b>Check rotation of the BLayer</b>: Lorentz-angle drift would bring a rotation at first order of the B-layer as 1. reflection of IBL behaviour and 2. lorentz-angle drift itself in BLayer. </li>
+      <li> <b>Align the rad. damaged MC</b>: (cry)</li>
+    </ul>
+  </p>
+
+  <b> <a style="color:green"> Status </a> </b>
+  <p>
+    Preliminary results on the analysis on IBL Lorentz-angle shown <a href="https://indico.cern.ch/event/1220694/contributions/5135161/attachments/2545101/4382691/ID20221110.pdf">here</a> and collected in this <a href="https://gitlab.cern.ch/atlas-idalignment/rad-damage-alignment">repository</a> (meant to collect all these studies). Latest updates are in the branch <code>get-temperature-paolo-camilla</code> as C. Vittori was the author of the latest updates.
+  </p>
+
+  <b> <a style="color:orange"> To-do </a> </b>
+  <p>
+    Recover the code, and test the linearity of the Lorentz-angle drift vs. luminosity (not time), as the time evolution seem to have jumps that are not easy to interpret. The effect seem also to be too big (maybe, but check with Camilla). Move to the shrinkage of stave and other studies as well.
+  </p>
+
+
+</div>
+
+<!-- db -->
+<br><br>
+<h4 id="db" name="db"> Some DB tips and docs </h4> <br>
+<div class="container px-4 px-lg-8 justify-content-center" style="margin:10px">
+  I just put here some info about the DB management, other than the automatic upload that is descirbed in this <a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/AtlasIDAlignOps2022#Constants_checker_upload">twiki</a>. Many instructions on <emph>"how things have been done in the past"</emph> are available in atlidali under these paths:
+  <ul>
+    <li> <code>/afs/cern.ch/user/a/atlidali/w0/calibLoop/checker/CalibrationLoop2016/DynamicIDAlignDBTools/InstructionsUploadFromJavi</code>: <br>super-useful logs from Javi to handle DB in various situations. </li>
+    <li> <code>/afs/cern.ch/user/a/atlidali/w0/calibLoop/checker/CalibrationLoop2016/DynamicIDAlignDBToolsRun3/diary</code>: <br>logs from Paolo experience with DB (but also some other things related to automatic upload) during 2022 ops. </li>
+  </ul>
+  Below, I try to give some example on how to do things, that should be covered in the logs above. <br>
+
+  <br><br>
+  <h5> Check the DB entries </h5>
+  <p>
+  It is super easy, and <code>AtlCoolConsole</code> is the command to use. For example, some runs of 2017 for the run <code>334384</code> seem to be weird, let's check the bowing.<br>  
+  <pre><code>
+      $ AtlCoolConsole.py COOLOFL_INDET/CONDBR2
+      # wait for the access to the remote offline
+      $ >> cd Indet/IBLDist
+      $ >> usetag IndetIBLDist_Run2_Legacy_looser_2017_AllRight # the run2 legacy tag for rel.22
+      $ >> userunlumi 334384 0 334385 0
+  </code></pre>
+  This will show the following values:
+  <small><pre><code>
+	[334384,0] - [334384,84) (100) [stave (Int32) : 0], [eta (Int32) : 0], [mag (Float) : -0.0043382602743804455], [base (Float) : 0.0], [free (Float) : 0.0]
+	[334384,84] - [334384,104) (100) [stave (Int32) : 0], [eta (Int32) : 0], [mag (Float) : -0.00481896847486496], [base (Float) : 0.0], [free (Float) : 0.0]
+	[334384,104] - [334413,0) (100) [stave (Int32) : 0], [eta (Int32) : 0], [mag (Float) : -0.005411682650446892], [base (Float) : 0.0], [free (Float) : 0.0]
+	...
+	[334384,0] - [334384,84) (1400) [stave (Int32) : 13], [eta (Int32) : 0], [mag (Float) : -0.003109687240794301], [base (Float) : 0.0], [free (Float) : 0.0]
+	[334384,84] - [334384,104) (1400) [stave (Int32) : 13], [eta (Int32) : 0], [mag (Float) : -0.004154331050813198], [base (Float) : 0.0], [free (Float) : 0.0]
+	[334384,104] - [334413,0) (1400) [stave (Int32) : 13], [eta (Int32) : 0], [mag (Float) : -0.003895237809047103], [base (Float) : 0.0], [free (Float) : 0.0]~
+  </code></pre></small>
+  So you see, the IoVs of the corresponding constants, for different ranges of LBs. This run has 3 blocks of LBs for which the dynamic constants are delivered: <code>[0,84), [84,104), [104, end-of-run)</code>. A value of bowing (indicated as <code>mag</code>) is given for each stave, named as channel (you see different stave IDs). You can select a single stave by selecting the channel (via <code>usechan</code>), in this case <code> (channel) = (stave ID)*100 + 100</code>, but this is not general, each subdetector in each folder has its own encoding of channels.
+  </p>
+
+  <br><br>
+  <h5> Copy the content of the DB in a local db file  </h5>
+  <p>
+    In this case, we use <code>AtlCoolCopy</code>, to copy the content of the remote DB in a local db file (to manipulate, merge etc..)
+    <pre><code>
+	AtlCoolCopy COOLOFL_INDET/CONDBR2 "sqlite://;schema=mylocaldb.db;dbname=CONDBR2" -create -folder /Indet/IBLDist -tag _SOURCE_TAG_ -outtag _LOCAL_TAG_ -runlumisince _FIRST_RUN_ _FIRST_LB_ -runlumiuntil _LAST_RUN_ _LAST_LB_  -alliov
+    </code></pre>
+    This copy the content of the folder <code>/Indet/IBLDist</code> from the tag <code>_SOURCE_TAG_</code> for the IoV <code>[_FIRST_RUN_, _FIRST_LB_] - [_LAST_RUN_, _LAST_LB_]</code> into the local database file <code>mylocaldb.db</code> renaming the tag in <code>_LOCAL_TAG_</code>.
+    In case we need to copy some constants/extend some IoV, one can <emph>re-direct</emph> the constants into another IoV - <a style="color:orange"> warning: be careful with changing IoVs, the "size" must match!</a> - with the commands <code>-newrunlumisince</code> and <code>-newrunlumiuntil</code>.
+
+    <br><br> With these two commands (<code>AtlCoolConsole</code> and <code>AtlCoolCopy</code>) you can do most of the activities in the alignment operations.
+    <ul>
+      <li> Investigate the content of local or remote DB, to check whether entries make sense.</li>
+      <li> Manipulate the content of local or remote, by copy-paste values for given IoVs from a source db.</li>
+      <li> Create new tags that can have some IoVs or "static" (going from 0 to infinitiy as LB validity).</li>
+    </ul>
+    A great example are the instructions Javi left for the fix of 2017 bowing constants here: <br><small><code>/afs/cern.ch/user/a/atlidali/w0/calibLoop/checker/CalibrationLoop2016/DynamicIDAlignDBTools/InstructionsUploadFromJavi/InstructionsFixingLegacyForBowingIBL2017.txt</code></small>
+
+    <br><br> In case of need of creating a <b>static tag</b>, sometimes useful for L3 constants, you can do it with an automated script here:
+    <br><small><code>~/w0/calibLoop/checker/CalibrationLoop2016/StaticTagCreator</code></small>. <br><br>An example of usage is:
+    <pre><code>
+       python IDALignmentConstantsUploadToDB.py --tagInfo 'Static tag for 2017 run 337491. Trying to solve pt+/pt- asymmetry. For testing and CL realignment' --tagFamilyName _pt+-_2017_2ndPart_PixelL3_0 --inputRootFile data17_13TeV.00337491.calibration_IDTracks.idalignsolve.ROOT_CONSTANTS.Step6.Iter0.Block00.rel22_c0._0001.4 --inputDBFile data17_13TeV.00337491.calibration_IDTracks.idalignsolve.ROOT_DB.Step6.Iter0.Block00.rel22_c0._0001.4 --baseRun 337491 --EXEC
+    </code></pre>
+    What you <b>cannot</b> with these two commands? Push constants into <emph>protected</emph> tags - see definition in references below. For that, you need to use the next command.
+
+  </p>
+  
+  <br><br>
+  <h5> Push constants into a protected (UPD1/UPD4) tags  </h5>
+  <p>
+    To do so, <code>AtlCoolMerge</code> command is needed. The syntax is pretty similar to <code>AtlCoolCopy</code>, the only difference is that you need the user/password credential to push - find them <emph>hard-coded</emph> as <code>passphrase</code> here: <small><code>/afs/cern.ch/user/a/atlidali/w0/calibLoop/checker/CalibrationLoop2016/DynamicIDAlignDBToolsRun3/CalibrationLoopChecker.py</code></small>. The syntax is the following:
+    <pre><code>
+	/afs/cern.ch/user/a/atlcond/utils/AtlCoolMerge.py --debug --batch --nobackup --comment "My comment on the tag" --tag MyTagName --passopt='-cti' --folder /Indet/FOLDER /path/to/local/db/file.db CONDBR2 ATLAS_COOLWRITE _USER_ _PSW_
+    </pre></code>
+    This command is <b>crucial</b> in the CalibrationLoop pushing of the constants. However, this is usually coded into the CL scripts, such as <code>CalibrattionLoopScript.py</code>. 
+
+  </p>
+  
+</div>
+
+<!-- activities -->
+<br><br>
+<h4 id="weakmode" name="weakmode"> Weakmodepackage @ atlidali </h4> <br>
+<div class="container px-4 px-lg-8 justify-content-center" style="margin:10px">
+  The <code>weakmodepackage</code> has been fully ported to atlidali, and working smoothly from there. At the moment all is stored (or better <emph>linked</emph>) in the <code>~/weakmode</code> folder. Here, a small walkthrough of all steps from <code>Zmumu</code> ntuples to maps/plots for iterations. A small description is already in <code>useful_instructions.txt</code> within the folder. 
+
+  <br><br> <b> Prepare the batch scripts </b>: given files to run the weakmode analysis over, the command to prepare the "job" scripts is the following:
+  <pre><code>
+      python prepareBatch.py /path/to/zmumu/ntuples/*root
+  </code></pre>
+  This creates a single folder for each root file, meaning that the analysis is ran over each of the root file separately. In case you want to run over all of them together, you can add <code>MERGE</code> immediately after <code>python prepareBatch.py</code>.
+
+  <br><br> <b> Launch the jobs </b>: once the folders are ready, we can run the jobs. The problem is that currently the code is stoded in <code>/eos/</code> preventing the batch system to work. Therefore, you can just run the shell script manually, with this snippet:
+  <pre><code>
+      for folder in folder_1 folder_2 .. folder_N; do ./${folder} | tee ${folder}/log ; done
+  </code></pre>
+  The output is stored, with the folder name, in <code>~/weakmode</code>. In case in the future the code will be moved again out of /eos/ you can run that with:
+  <pre><code>
+      condor_submit zmumu.sub
+  </code></pre>
+
+  <br><br> <b> Plot the maps </b>: detailed instructions are in <a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/InDetPerformanceMonitoring#Output_plotting">this page</a>, the scripts are stored in <code>~/weakmode/to_scripts/</code>.
+
+  <br><br> <b> Create the maps for the following iteration </b>: the script is stored within <code>~/weakmode/maps</code>. The base command is:
+  <pre><code>
+      python makeZmumuMapFile.py -i /path/to/input/root/file.root -o /path/to/output/map.root
+  </code></pre>
+  You can customize the content with some variables at the top of the script:
+  <ul>
+    <li> <code>_useVarMin_</code>: it makes use of the <emph>VarMin</emph> method to fill the <code>dsagitta</code> constrain maps (recommended: <code>True</code>).</li>
+    <li> <code>_injectGlobalSagitta_</code>: if not set to <code>None</code>, it adds the given value (in 1/TeV) onto the values of the <code>dsagitta</code> map (recommedned: <code>None</code>).</li>
+    <li> <code>_fullD0Constr_</code>: it fills the <code>do_constraint</code> map with the value of mean d0 and not the default delta_d0 (recommended: <code>True</code>).</li>
+    <li> <code>_fullZ0Constr_</code>: it fills the <code>do_constraint</code> map with the value of mean z0 and not the default delta_z0 (recommended: <code>False</code>).</li>
+    <li> <code>_doInvertIP_</code>: it flips the sign of the values in the IP (d0 & z0) maps  (recommended: <code>True</code>).</li>
+    <li> <code>_doInvertSagitta_</code>: it flips the sign of the values in the dsagitta maps  (recommended: <code>False</code>).</li>
+  </ul>
+</div>
+
+<!-- ific -->
+<br><br>
+<h4 id="ific" name="ific">  Resources at IFIC </h4> <br>
+<div class="container px-4 px-lg-8 justify-content-center" style="margin:10px">
+  Here, I put a list of contents available at IFIC machines. Anyone at IFIC (Salva, David, Mariam) could access them from their areas.
+  <ul>
+    <li> <code>/lhome/ific/p/psabatin/idali/plotting</code>: containing the plots from monitoring files (Zmumu, IDTracks). Each folder contains the setup (plots and config) for different studies. The command used, once accessed to a given <code>InDetAlignExample/InDetAlignmentMonitoring/</code> folder are contained in <code>manual</code> in order to redirect the output to a given folder. </li>
+    <li> <code>/lhome/ific/p/psabatin/idali/pubnote</code>: containing all the scripts/code to produce the plots that went into the ID alignment Rel. 22 Run2 PUB note. </li>
+    <li> <code>/lhome/ific/p/psabatin/idali/run_conddbv5</code>: containing the scripts and outputs for validation of CONDBR-RUN2-05 and development towards CONDBR-RUN2-09. </li>
+    <li> <code>/lhome/ific/p/psabatin/idali/run_mdn_realign</code>: containing the scripts and outputs for the re-alignment of Run2 in Rel.22 due to MDN bias, leading to CONDBR-RUN2-05 constants. </li>
+    <li> <code>/lhome/ific/p/psabatin/idali/run_repro</code>: containing the scripts and outputs the validation of the official reprocessing tag CONDBR-RUN2-09. </li>
+    <li> <code>/lhome/ific/p/psabatin/idali/run_repro_raddist</code>: tests of Alex's radial distortion code on top of the CONDBR-RUN2-09 run. Stats of the availalbe Jpsi samples (cut at pT > 20 GeV) too low.</li>
+    <li> <code>/lhome/ific/p/psabatin/idali/run_repro_runbyrun</code>: scripts to measure the biases run-bu-run on CONDBR-RUN2-09 tag.</li>
+    <li> <code>/lustre/ific.uv.es/grid/atlas/t3/psabatin/ntuples_idali</code>: inpunt ntuples/monitoring files to produce output. Names of the sub-folders should distinguish the different goals. In case of monitoring, you can decode them looking at the plotting configurations in <code>/lhome/ific/p/psabatin/idali/plotting</code>.</li>  
+    
+  </ul>
+
+</div>
+
+<!-- eos -->
+<br><br>
+<h4 id="eos" name="eos">  Resources on EOS </h4> <br>
+<div class="container px-4 px-lg-8 justify-content-center" style="margin:10px">
+  Here, I put a list of contents related to id-alignment in my EOS - access is granted to anyone subscribed to the egroup. Otherwise, the main folder (idali) is public through this <a href="https://cernbox.cern.ch/s/SpWNgEGnULcBtrH">link</a>.
+  <ul>
+    <li> <code>/eos/user/p/psabatin/idali/201?_*Part</code>: containing the monitor & Zmumu maps for the Rel. 22 Run2 re-alingnment campaign. </li>
+    <li> <code>/eos/user/p/psabatin/idali/Fix2017</code>: containing monitoring plots for the re-alingment of 2017 1stPart due to the bug in bowing database. </li>
+    <li> <code>/eos/user/p/psabatin/idali/IDCalib</code>: monitoring plots comparing kinematics of tracks in IDCalib and express streams. </li>
+    <li> <code>/eos/user/p/psabatin/idali/Reprocessing</code>: input maps for the recommendations for Run2 Rel.22 reprocessing. </li>
+    <li> <code>/eos/user/p/psabatin/idali/Run3</code>: Containing validation slides for the L3 alignment of "first part" (before RF-issue break) of 2022 data-taking. It also contains the CL residuals and plots for the PUB. </li>
+    <li> <code>/eos/user/p/psabatin/idali/Run3_PeriodsComp</code>: comparison of constants performances over different periods of 2022 data-taking. </li>
+    <li> <a href="https://cernbox.cern.ch/files/spaces/eos/user/p/psabatin/tmp/idali/ValidationDbV9_v2.pdf"><code>/eos/user/p/psabatin/tmp/idali/ValidationDB9_v2.pdf</code></a>: validation slides for the Run2 Rel. 22 reprocessing final constants (CONDBR2-RUN2-09).
+    <li> <code>/eos/user/p/psabatin/tmp/idali/RunByRunZmumu</code>: maps (root) for all the runs in Run2 run-by-run obtained with the CONDBR2-RUN2-09 tag. </li>
+    <li> <code>/eos/user/p/psabatin/tmp/idali/PtRatioPlots</code>: ratio of the mu+/mu- pT with CONDBR2-RUN-05 (before global sagitta bias reduction). </li>
+    <li> <code>/eos/user/p/psabatin/tmp/idali/900GeV</code>: plots for the PUB note for tracking using 900 GeV collisions (2022). </li>
+  </ul>
+
+</div>
+
+<!-- references -->
+<br><br>
+<h4 id="references" name="references"> Useful references </h4> <br>
+<div class="container px-4 px-lg-8 justify-content-center" style="margin:10px">
+This section contains a list of useful references/documentations on several relevant aspects of the alignment.
  <ul style="margin:5px">
-   <li> tpm </li>
-   <li> tmp </li>
+   <li> Master twiki of the ID alignment group: <a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/InDetAlignment"> twiki</a> </li>
+   <li> Informations on CL functioning: <a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/IDAlignmentCalibLoop"> this twiki</a> and <a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/AtlasIDAlignOps2022#Calibration_Loop"> this twiki </a> </li>
+   <li> Information automatic upload constants (with troubleshooting): <a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/AtlasIDAlignOps2022#Constants_checker_upload">  twiki</a> </li>
+   <li> Information monitoring webpage (with troubleshooting): <a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/AtlasIDAlignOps2022#Webpage_maintenance">  twiki</a> </li>
+   <li> Naive tutorial on how an alignment job works (in Rel. 22): <a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/InDetAlignTutorialRun2Rel22">  twiki</a> </li>
+   <li> Explanation DB structure: <a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/DynamicDBTutorial">  twiki</a> </li>
+   <li> (Ultra) useful tutorial on Tier0 machinery: <a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/Tier0AlignmentTutorial">  twiki</a> </li>
+   <li> Tutorial on Zmumu jobs (in Athena, <b>not on T0</b>): <a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/InDetPerformanceMonitoring">  twiki</a> </li>
+   <li> Documentation Rel. 22 Run 2 recommendations: <a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/IDAlignmentRel22Run3Recommendations">  twiki</a> </li>
+   <li> Container twiki for all DB people/tools: <a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/ConditionsDB"> twiki </a> </li>
+   <li> (General) information of COOL Tags: <a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/CoolTagging"> twiki </a> </li>
+   <li> Tutorial for copy remote->local or local->remote (non-protected tags) DB: <a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/AtlCoolCopy"> twiki </a> </li>
+   <li> Tutorial for publishing constants in protected tags (UPD1/4): <a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/CoolPublishing#Publishing_with_AtlCoolMerge"> twiki </a> </li>
+   <li> Informations on protected tags: <a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/CoolProtectedTags"> twiki </a> </li>
+   <li> Navigate the DB: <a href="https://twiki.cern.ch/twiki/bin/view/AtlasComputing/AtlCoolConsole"> twiki </a> </li>
+   <li> Monitoring page for upload constants (from DB people): <a href="https://atlas.web.cern.ch/Atlas/GROUPS/DATABASE/project/catrep/nemo/monToolsUPDTags.html"> twiki </a> </li>
+   <li> (JIRA) MDN issue documentation: <a href="https://its.cern.ch/jira/browse/ATLASDQ-830"> jira </a> </li>
+   <li> (JIRA) Important ticket for Run2 conditions: <a href="https://its.cern.ch/jira/browse/ATLGBLCONDTAGS-14"> jira </a> </li>
+   <li> (slides) Interesting BELLE2 alignment: <a href="https://indico.cern.ch/event/948465/contributions/4324128/attachments/2244955/3811061/Belle2AlignmentCHEP2021.pdf"> slides </a> </li>
+   <li> COMA documetations for data-taking periods <a href="https://atlas-tagservices.cern.ch/tagservices/RunBrowser/runBrowserReport/rBR_Period_Report.php"> link </a> </li>
+   <li> Historical discussion to get the monitoring page up <a href="https://its.cern.ch/jira/browse/CSOPS-1793"> link </a> </li>   
+   <li> ACRON documentation: <a href="https://acrondocs.web.cern.ch/">link</a> </li>
+   <li> Run3 Tier0 TaskLister: <a href="https://tzcontzole02.cern.ch/run3/tasklister/">link</a> </li>
+   <li> (JIRA) <b>Important ticket for Run3 conditions</b>: <a href="https://its.cern.ch/jira/browse/ATLGBLCONDTAGS-79">link</a></li>
  </ul>
 
 
