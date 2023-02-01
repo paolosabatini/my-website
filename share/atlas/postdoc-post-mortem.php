@@ -60,7 +60,7 @@ require ("../../init.php");
 	       $articles = array();
 	       $articles[] = new Article ("Monotop searches", "last update: 24/01/2023", "monotop.html");
       	       $articles[] = new Article ("ID alignment", "last update: 01/02/2023", "idali.html");
-       	       $articles[] = new Article ("CalRatio searches", "last update: --/--/---", "calratio.html");
+       	       $articles[] = new Article ("CalRatio searches", "last update: 01/02/2023", "calratio.html");
 
 	       
 	       foreach ($articles as $article) {

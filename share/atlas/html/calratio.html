@@ -5,20 +5,75 @@
 <h4> Table of contents </h4><br>
 <div class="container px-4 px-lg-5" style="margin:10px">
 <div class="list-group">
-  <button type="button" class="list-group-item"> <a href="#">   tmp </a>  </button> 
+  <button type="button" class="list-group-item"> <a href="lowemf">  Low EMF JES systematic evaluation </a>  </button> 
 </div>
 </div>
 
 
 <!-- status -->
 <br><br>
-<h4 id="" name=""> tmp </h4> <br>
+<h4 id="lowemf" name="lowemf"> Low EMF JES systematic evaluation </h4> <br>
 <div class="container px-4 px-lg-8 justify-content-center" style="margin:10px">
-tmp
- <ul style="margin:5px">
-   <li> tpm </li>
-   <li> tmp </li>
+
+  <p>
+  In this section, I want to collect the instructions to evaluate the systematics associated to low EMF jets as JES. The review over all the slides I presented in calratio meetings are at <a href="https://indico.cern.ch/category/14108/search?q=Paolo+Sabatini&sort=-mostrecent">this link</a> and a more coherent description of the evaluation is the <a href="https://cds.cern.ch/record/2712171/files/ATL-COM-PHYS-2020-168.pdf#page=123">IntNote</a>.
+ </p>
+
+  <h5> Workflow </h5>
+  <p>
+    The idea is similar to the <emph>\eta intercalibration</code> procedure, in few words: measure the response in terms of pT of the jet as a function of EMF and extrapolate the value at extremely low EMF (<0.05). Therefore, this systematic would cover the discrepancy from "standard" jets due to the low EMF, then we can assume that the "standard" systematics cover for the remaining discrepancies. The code is stored in <a href="https://gitlab.cern.ch/psabatin/jetuncertaintyemf/">this repository</a> with a skeleton instruction in the README. In case you cannot modify - and it is too late for me to change the access - just make your own fork of the repo.
+																										    
+ </p>
+
+ <h6><b> Selection of samples</b></h6>
+ We can measure the response on di-jet events, where we expect that the two jets would have the same pT in average. Therefore, we can selet events from di-jet, tag the jet with low EMF and fill the tag & probe distibution of pT. Therefore, we select some samples of data & MC, as the systematic is evaluated as extrapolated difference of data from MC at low EMF. There are two things to take into account when selecting these samples:
+ <ul>
+   <li> <b>pT spectrum</b>: be sure to span over different pTs and check they are similar or parametrize over pT in case a strong dependence is found. It means: use different triggers and different MC pT slices.</li>
+   <li> <b>pileup</b>: use consistent data and MC periods in order to have consistent pileup profiles, and check the dependence vs. pileup.
  </ul>
 
+  <h6><b>Create the asymmetry histograms</b></h6>
+  Run the analysis code both on data and MC in order to create an output ROOT file, containing all raw distributions of Asymmetry (mening difference between tag and rpboe pT distribution). Here, the tag jet is the low EMF jet, the probe is the other. This step is done with the command:
+  <pre><code>
+      python calibrateJetEMF.py -o output-file-name -c campaign
+  </code></pre>
+  The campaign stands for selecting coherent MC and data slices listed in the files <code>lib/data*ds</code> and <code>lib/mc*ds</code>.
+
+  <br><br><h6><b>Fit the distributions and extrapolate the systematics</b></h6>
+  This steps does the core of the analysis in terms of fitting and stuff:
+  <ul>
+    <li> Fits the asymmetry distribution for data and MC stored in the intput file in different slices of EMF & eta.</li>
+    <li> For a fixed eta slice, compare the profile of the fitted A (or R) for different EMF bins.</li>
+  </ul>
+  All these steps are done with the command:
+  <pre><code>
+      python makeMaps.py -i input-file-name -c campaign
+  </code></pre>
+  This will create output plots and store them in the ROOT file given in input.
+
+  <br><br> Now it is time to compare the profiles for data and MC and extrapolate the uncertianty. This is done with a scirpt.
+  <pre><code>
+      python extrapUncertainty.py -i input-file-name
+  </code></pre>
+  It creates some plots in output with corresponding values of estimated uncertainty at low EMF.
+ 
+  
+  <br><br><h6><b>Monitoring/Validation</b></h6>
+
+  In case you want to compare the uncertainties for different pT slices or reference MC sample used, you can compare the final extrapolated uncertainty for different eta (or pileup) bins with the following command.
+  
+  <pre><code>
+      python compareUncertainties.py 
+  </code></pre>
+
+  You can customize what to show with the first lines of the scirpt.
+
+  <br><br> If you want to profile the uncertainty at different pileup bins and not eta, instead of using <code>MakeMaps.py</code>, use the command <code>MakePUMaps.py</code>.
+
+  <br><br> If you want to validate the kinematic modelling of the data and MC use this script:
+  <pre><code>
+      python makeMonitor.py -i input-file-name -c campaign -l label-of-output-folder
+  </code></pre>
+  
 
 </div>
