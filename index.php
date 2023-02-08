@@ -199,6 +199,24 @@ require("init.php");
 
 	    </div>
 	  </div>	
+	  <!-- Card 2 -->
+	  <div class="card mb-4 bg-light" >
+	    <div class="row">
+
+	      <div class="col-md-2">
+	        <div align="center" class="spinner-grow m-5 text-primary" style="width: 3.5rem; height: 3.5rem;" role="status">	</div>
+              </div>
+
+	      <div class="col-md-10"  style="margin-left:0px">
+	        <div class="card-body">
+		<h5 class="card-title"> <a href="./blog.php"> First blog article now public! </a> </h5>
+		<p class="card-text"> Article on the analysis of social media activity of the newly elected Italian prime minister Giorgia Meloni is now online! 
+		<p class="card-text"><small class="text-muted">February 8th, 2023</small></p>
+		</div>
+	      </div>
+
+	    </div>
+	  </div>	
 	<br>
 	</div>
 	</section>
