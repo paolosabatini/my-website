@@ -143,16 +143,28 @@ require("init.php");
                 </div>
                 <!-- Project Two Row-->
                 <div class="row gx-0 justify-content-center">
-                    <div class="col-lg-6"><img class="img-fluid" src="img/mic.jpg" alt="..." style="background-size: cover;height: 100%;width: 100%;"/></div>
+                    <div class="col-lg-6"><img class="img-fluid" src="img/pen_and_paper.jpg" alt="..." style="background-size: cover;height: 100%;width: 100%;"/></div>
                     <div class="col-lg-6 order-lg-first">
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
                                 <div class="project-text w-100 my-auto text-center text-lg-right">
+
+
+                                    <a href="blog.php"> <h4 class="text-white">Blog</h4><br></a>
+                                    <p class="mb-0 text-white-50"> Collection of small articles about my passions: <b>physics</b>, <b>science</b> and <b>data analysis</b>.<br><br>
+				    Hopefully, this will evolve in <b>EQN</b>, a science outreach podcast exploring the humans behind revolutions in science. 
+				    
+				    </p>
+                                    <hr class="d-none d-lg-block mb-0 me-0" />
+				    
+				    <!-- Outreach section 
                                     <h4 class="text-white">Outreach</h4><br>
                                     <p class="mb-0 text-white-50"> The long term project is to create some media content about my passions: <b>physics</b>, <b>science</b> and <b>data analysis</b>.<br><br>
 				    EQN is a science outreach podcast exploring the humans behind revolutions in science. Stay tuned. 
 				    
 				    </p>
+				    -->
+				    
                                     <hr class="d-none d-lg-block mb-0 me-0" />
                                 </div>
                             </div>

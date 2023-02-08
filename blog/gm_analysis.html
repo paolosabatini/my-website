@@ -1,0 +1,121 @@
+<h2 > President Meloni: the quiet wave </h2>
+<br>
+<p align="left" style="color:gray">
+In recent years, Italian politics has been dominated by one name: Giorgia Meloni. Despite being long overlooked by political rivals, she went on to become Italy's first female Prime Minister, leading a government formed on October 23rd, 2022.
+</p>
+<p align="left" style="color:gray">
+This article offers a brief analysis of Giorgia Meloni's social media activity on Twitter over the past five years (using <a href="https://github.com/JustAnotherArchivist/snscrape">snsscrape</a> <emph>Python</emph> package), from the previous Italian political election to her recent win. The analysis looks not only at the frequency of her tweets but also the content, in order to gain insight into the tactics employed by Meloni and her social media team to achieve her recent election victory.
+</p>
+
+<br><br>
+<h4 > A bit of context: Italian politics 2018-22 </h4> <br>
+<p align="left" style="color:gray"> 
+ The political landscape in Italy over the past five years has seen several changes. In the 2018 election, the M5S party, led by Luigi di Maio, won with around one third of the votes, while the Lega party (right-wing) and the Democratic Party (centre-left) received similar percentages. The first coalition government, known as "Conte I", was formed between the Lega and M5S parties with Giuseppe Conte as Prime Minister. 
+<br><br> During the initial 18 months of the government, both participating parties engaged in their symbolic battles, including the implementation of a citizenship salary (M5S), reforms to the pension system and measures against immigration (Lega), which ultimately led to a rise in popularity for the Lega party.
+<br><br> However, in the summer of 2019, Salvini broke the coalition in an attempt to secure a single-party government, but this plan was overruled by the M5S and PD coalition in the autumn of 2019, leading to the formation of the "Conte II" government. This government faced the COVID crisis and the following economic crisis. In the end of 2021, a parliamentary crisis within the centre-left parties led to the President of the Republic, Mattarella, forming a broad coalition government led by former European bank President, Mario Draghi. Meloni's party, Fratelli d'Italia, was not involved in the coalition.
+<br><br> Following M5S's decision to exit the governing coalition in July 2022 due to their support of Ukraine against Russian aggression, Draghi resigned, and President Mattarella called for new elections in October, that saw a condensed campaign period, a successful moment for Meloni's party.
+ </p><br>
+
+<br>
+<h4 > Evolution of the Twitter activity </h4> <br>
+<p align="left" style="color:gray"> 
+The activity of Giorgia Meloni on Twitter in the last five years is shown in the plot, displaying the weekly average  number of tweets per day starting from 2018 up to the latest election on October 14th, 2022. Different lines are labeled to indicate the different years and political events that took place during that time. It can be observed that Giorgia Meloni did not heavily use Twitter in the past, with a peak of around 10 tweets/day, including replies and retweets. However, there is a noticeable trend of increasing activity on Twitter, particularly in the summer of 2019 during the immigration crisis. At that time, the right-wing party, led by Salvini, saw a rise in popularity and engagement with the public, driven by his strict immigration policy as Minister of Internal Affairs.
+</p>
+
+<br><div class="text-center">
+  <img class="img-fluid float-center" src="img/blog/gm_analysis/GiorgiaMeloni_nt_per_day_vs_nweek.png" alt="..." style="background-size: cover;width: 100%;"/> &nbsp;&nbsp;
+<!--  <img class="img-fluid float-center" src="img/physics/4tops/figaux_16.png" alt="..." style="background-size: cover;width: 47%;"/> -->
+</div><br><br>
+<br>
+
+<p align="left" style="color:gray">
+She joined the fray during the crucial period of the initial immigration crisis. It was a defining moment for her and her political party. However, despite the numerous crises such as the COVID pandemic and the Russian aggression, her Twitter activity has remained steady, indicating that she has not been overly aggressive or overexposed.
+</p>
+
+<br><p align="left" style="color:gray">
+How does it compare to the political colleagues and opponents at the time? When we examine the number of tweets for all the politicians in Italy, most have around 2 to 5 tweets a day. However, Salvini stands out with a high of 74 tweets, with an average of 16 tweets/day, making him the standout exception. It could be worth analyzing his syntax and context in future articles, especially during the times of the "Conte I". Carlo Calenda is also known to be very active on Twitter, as demonstrated by his significantly higher activity on the social media.
+</p>
+
+<br>
+<div class="text-center">
+  <table class="table table-hover table-sm">
+    <thead class="thead-dark"><tr>
+	<th> Account </th>
+	<th> Mean </th>
+	<th> Standard deviation </th>
+	<th> Min. </th>
+	<th> Max. </th>    
+    </tr></thead>
+    <tbody>
+      <tr><td> @GiorgiaMeloni</td> <td> 4.4 </td> <td> 1.8 </td> <td> 0.9 </td> <td> 10.3 </td></tr>
+      <tr><td> @EnricoLetta</td> <td> 2.3 </td> <td> 1.6 </td> <td> 0.1 </td> <td> 8.0 </td></tr>
+      <tr><td> @CarloCalenda</td> <td> 13.6 </td> <td> 5.8 </td> <td> 2.3 </td> <td> 37.0 </td></tr>
+      <tr><td> @GiuseppeConteIT</td> <td> 1.1 </td> <td> 0.9 </td> <td> 0.1 </td> <td> 6.3 </td></tr>
+      <tr><td> @matteorenzi</td> <td> 2.4 </td> <td> 1.7 </td> <td> 0.1 </td> <td> 9.3 </td></tr>
+      <tr><td> @matteosalvinimi</td> <td> 16.8 </td> <td> 11.8 </td> <td> 1.4 </td> <td> 74.1 </td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+<br>
+<p align="left" style="color:gray">
+Meloni adopted a laid-back strategy aimed at projecting a moderate and less combative image. This was evident in the recent election rally, where the activity of various political actors was measured against the Draghi government as a benchmark period. By normalizing the activity after Draghi's resignation to the baseline, we were able to compare the relative activity before and during the rally. The control region appeared to be consistent, with all points falling within 2 standard deviations (assuming a constant distribution of tweets, these points are contained within the 95% confidence level). However, with the start of the rally, the activity of all competitors increased significantly, reflecting a heightened presence on social media. In contrast, Meloni maintained the same trend as the baseline, revealing a low-key approach on social media. Similarly, Renzi did not show a significant increase as he delegated the campaign to his ally Calenda.
+</p>
+
+<br><div class="text-center">
+  <img class="img-fluid float-center" src="img/blog/gm_analysis/std_nt_per_day_vs_nweek_from_draghi_comparison.png" alt="..." style="background-size: cover;width: 100%;"/> &nbsp;&nbsp;
+<!--  <img class="img-fluid float-center" src="img/physics/4tops/figaux_16.png" alt="..." style="background-size: cover;width: 47%;"/> -->
+</div><br><br>
+
+<p align="left" style="color:gray">
+This is even more evident in the plot below, that shows the p-value (i.e. the probability) of the Twitter activity (measured as number of tweets per day) during the electoral rally to be compatible with the baseline. Only Meloni and Renzi have an activity compatible with the benchmark before Draghi's resignation. The p-value is intended to be cumulative from the beginning of the baseline time, to appreciate the deflection from the benchmark during the electoral campaign.
+</p>
+
+<br><div class="text-center">
+  <img class="img-fluid float-center" src="img/blog/gm_analysis/std_draghitime_pvalue_nt_per_day_vs_nweek_from_draghi_comparison.png" alt="..." style="background-size: cover;width: 100%;"/> &nbsp;&nbsp;
+<!--  <img class="img-fluid float-center" src="img/physics/4tops/figaux_16.png" alt="..." style="background-size: cover;width: 47%;"/> -->
+</div><br>
+
+<br>
+<h4 > Evolution of tweet contents </h4> <br>
+<br>
+<p align="left" style="color:gray">
+From the perspective of activity, we observed Meloni taking a low-key approach. To analyze the contents of tweets, we employed several open-source tools available on the web. The first tool was <a href="https://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/">TreeTagger</a>, which associates each word in a tweet with its type (article, verb, noun) and lemma (i.e. root word). This allowed us to clean up the tweet content. Next, we used the bag-of-words (from <a href="https://www.nltk.org/">NLTK</a>) approach to parameterize the tweet content by replacing it with the occurrence of words in the tweet. Finally, we employed k-means clustering (from <a href="https://scikit-learn.org/stable/">scikit-learn</a>), optimizing the number of clusters using the silhouette and elbow methods, to group the different tweets into clusters based on word occurrences and their correlations. The 40 clusters were eventually merged into 7 thematic areas:
+
+<ul style="color:gray">
+    <li> COVID-19 related tweets. </li>
+    <li>Immigration related tweets. </li>
+    <li>Italy first tweets (i.e. protectionism and nationalism content). </li>
+    <li>Political messages (i.e. topics related to politics, such as economy, jobs, pensions, healthcare, etc.). </li>
+    <li>Political opposition (i.e. direct attacks against opposition parties). </li>
+    <li>Self-promotion (i.e. events or slogans related to the party "Fratelli d'Italia"). </li>
+    <li>Wishes (i.e. random wishes such as "have a good Labor Day" or "Merry Christmas"). </li>
+</ul>
+</p>
+
+<p align="left" style="color:gray">
+The following GIF animation visually depicts the topic percentages over a month period to gather enough statistics. The GIF shows that certain topics like immigration tend to peak during certain times, such as summers of 2018 and 2019 and the Covid-19 pandemic in correspondance of the so-called <i>waves</i>. Political opposition is also evident during government changes and elections, but has significantly decreased after the formation of the Draghi government. On the other hand, self-promotion consistently occurs, especially during electoral campaigns. Meloni seems to adopt a low-key approach on social media in the last campaign (August and September 2022), focusing mainly on self-promotion and avoiding controversial topics to appear more moderate and trustworthy.
+</p>
+
+<br><div class="text-center">
+  <img src="img/blog/gm_analysis/population.gif" alt="..." style="width:50%">
+  <!-- <img class="img-fluid float-center" style="display:none" src="img/blog/gm_analysis/population.gif" alt="..." style="background-size: cover;width: 40%;"/> &nbsp;&nbsp; -->
+</div><br>
+
+<h4 > Take-home messages  </h4> <br>
+
+<ul style="color:gray">
+  <li> Meloni's Twitter usage is average compared to other politicians.</li>
+  <li> During the recent election campaign, Meloni chose to adopt a low-profile approach, unlike her rivals who increased their social media presence. </li>
+  <li> As the elections approached, Meloni's topics became more centered around herself and were less controversial.</li>
+  <li> The goal was to project a moderate and reliable image.</li>
+  <li>This strategy proved successful as she was elected as Italy's first female Prime Minister.</li>
+</ul>
+
+
+
+<br><br><br>
+<i style="color:gray"> Did you enjoy the style? This was mostly generated by <a href="https://openai.com/blog/chatgpt/">ChatGPT</a> from a raw input text from my side, and then cleaned a little bit. Cool, innit?  Use AI to boost your work.
+
+</i>
